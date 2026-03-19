@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:drift/drift.dart' as drift;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -107,6 +109,47 @@ class _HomeScreenState extends State<HomeScreen> {
                 onChanged: formProvider.setCompleted,
                 title: const Text('Completed'),
               ),
+              // Image preview
+if (formProvider.imagePath != null) ...[
+  ClipRRect(
+    borderRadius: BorderRadius.circular(12),
+    child: Image.file(
+      File(formProvider.imagePath!),
+      height: 180,
+      width: double.infinity,
+      fit: BoxFit.cover,
+    ),
+  ),
+  const SizedBox(height: 10),
+  TextButton.icon(
+    onPressed: formProvider.removeImage,
+    icon: const Icon(Icons.delete, color: Colors.red),
+    label: const Text('Remove Image'),
+  ),
+  const SizedBox(height: 10),
+],
+
+// Pick image buttons
+Row(
+  children: [
+    Expanded(
+      child: ElevatedButton.icon(
+        onPressed: formProvider.pickFromCamera,
+        icon: const Icon(Icons.camera_alt),
+        label: const Text('Camera'),
+      ),
+    ),
+    const SizedBox(width: 10),
+    Expanded(
+      child: ElevatedButton.icon(
+        onPressed: formProvider.pickFromGallery,
+        icon: const Icon(Icons.photo),
+        label: const Text('Gallery'),
+      ),
+    ),
+  ],
+),
+const SizedBox(height: 20),
               SwitchListTile(
                 value: formProvider.isImportant,
                 onChanged: formProvider.setImportant,
