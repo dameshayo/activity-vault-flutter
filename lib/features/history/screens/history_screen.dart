@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -58,7 +57,7 @@ class HistoryScreen extends StatelessWidget {
                               } else if (value == 'delete') {
                                 final confirm = await showDialog<bool>(
                                   context: context,
-                                  builder: (_) => AlertDialog(
+                                  builder: (dialogContext) => AlertDialog(
                                     title: const Text('Delete Activity'),
                                     content: const Text(
                                       'Are you sure you want to delete this activity?',
@@ -66,13 +65,22 @@ class HistoryScreen extends StatelessWidget {
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
-                                            Navigator.pop(context, false),
-                                        child: const Text('Cancel'),
+                                            Navigator.pop(dialogContext, false),
+                                        child: const Text(
+                                          'Cancel',
+                                          style:
+                                              TextStyle(color: Colors.black87),
+                                        ),
                                       ),
-                                      ElevatedButton(
+                                      TextButton.icon(
                                         onPressed: () =>
-                                            Navigator.pop(context, true),
-                                        child: const Text('Delete'),
+                                            Navigator.pop(dialogContext, true),
+                                        icon:
+                                            const Icon(Icons.delete, size: 18),
+                                        label: const Text('Delete'),
+                                        style: TextButton.styleFrom(
+                                          foregroundColor: Colors.red,
+                                        ),
                                       ),
                                     ],
                                   ),

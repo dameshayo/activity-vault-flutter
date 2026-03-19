@@ -83,3 +83,30 @@ class ActivityFormProvider extends ChangeNotifier {
     super.dispose();
   }
 }
+
+
+//  actions: [
+//                                       TextButton(
+//                                         onPressed: () =>
+//                                             Navigator.pop(context, false),
+//                                         child: const Text(
+//                                           'Cancel',
+//                                           style:
+//                                               TextStyle(color: Colors.black87),
+//                                         ),
+//                                       ),
+//                                       TextButton.icon(
+//                                         onPressed: () => Navigator.pop(
+//                                             context, true), // safe
+//                                         icon:
+//                                             const Icon(Icons.delete, size: 18),
+//                                         label: const Text('Delete'),
+//                                         style: ElevatedButton.styleFrom(
+//                                           foregroundColor: Colors.black87,
+//                                           shape: RoundedRectangleBorder(
+//                                             borderRadius:
+//                                                 BorderRadius.circular(8),
+//                                           ),
+//                                         ),
+//                                       ),
+//                                     ],
